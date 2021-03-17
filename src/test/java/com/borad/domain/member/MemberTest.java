@@ -1,27 +1,14 @@
 package com.borad.domain.member;
 
 import com.borad.domain.member.dto.MemberParamDto;
-import com.borad.domain.member.repository.MemberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
-@AutoConfigureMockMvc
-@ActiveProfiles("test")
-@Transactional(readOnly = true)
 public class MemberTest {
-    @Autowired
-    private MockMvc mockMvc;
-    @Autowired
-    private MemberRepository memberRepository;
 
     @Test
     @DisplayName("회원이 제대로 생성이 되었는지")
@@ -70,17 +57,5 @@ public class MemberTest {
         assertEquals(updateParamDto.getPassword(), member.getPassword());
         assertEquals(updateParamDto.getPhone(), member.getPhone());
         assertEquals(updateParamDto.getNickname(), member.getNickname());
-    }
-
-    private Member saveMember() {
-        Member member = Member.builder()
-                .name("테스트")
-                .nickname("테스트")
-                .email("테스트")
-                .password("test1234")
-                .phone("01012345678")
-                .mockMvcBuilderMember();
-
-        return memberRepository.save(member);
     }
 }
