@@ -1,7 +1,6 @@
 package com.borad.domain.member.service;
 
 
-
 import com.borad.domain.member.Member;
 import com.borad.domain.member.dto.MemberDto;
 import com.borad.domain.member.dto.MemberParamDto;
@@ -43,14 +42,14 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     @Transactional
-    public MemberDto updateMember(Long memberId, MemberParamDto dto) {
+    public MemberDto updateMember(final Long memberId, final MemberParamDto dto) {
         Optional<Member> member = memberRepository.findById(memberId);
         if (!member.isPresent()) {
             return null;
         }
         member.get().updateMember(dto);
 
-        return MemberDto.createMemberDto( memberRepository.save(member.get()));
+        return MemberDto.createMemberDto(memberRepository.save(member.get()));
     }
 
     @Override

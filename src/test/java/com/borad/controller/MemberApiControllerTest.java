@@ -1,22 +1,25 @@
 package com.borad.controller;
 
+import com.borad.common.RestDocsConfiguration;
+import com.borad.domain.member.Member;
 import com.borad.domain.member.dto.MemberParamDto;
 import com.borad.domain.member.repository.MemberRepository;
-import com.borad.domain.member.Member;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.stream.IntStream;
 
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -25,8 +28,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@ActiveProfiles("test")
 @Transactional(readOnly = true)
+@AutoConfigureRestDocs
+@Import(RestDocsConfiguration.class)
 public class MemberApiControllerTest {
 
     @Autowired
@@ -64,6 +68,7 @@ public class MemberApiControllerTest {
                 .andExpect(jsonPath("nickname").value(member.getNickname()))
                 .andExpect(jsonPath("email").value(member.getEmail()))
                 .andExpect(jsonPath("phone").value(member.getPhone()))
+                .andDo(document("회원 생성"))
                 .andDo(print())
         ;
     }
@@ -133,6 +138,7 @@ public class MemberApiControllerTest {
         // Then
         perform.andExpect(status().isOk())
                 .andExpect(jsonPath("page").exists())
+                .andDo(document("회원 페이징 조회"))
                 .andDo(print())
         ;
     }
@@ -150,6 +156,7 @@ public class MemberApiControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("name").exists())
                 .andExpect(jsonPath("memberId").exists())
+                .andDo(document("회원 한명 조회"))
                 .andDo(print())
         ;
     }
@@ -191,6 +198,7 @@ public class MemberApiControllerTest {
                 .andExpect(jsonPath("email").value(memberUpdateDto.getEmail()))
                 .andExpect(jsonPath("nickname").value(memberUpdateDto.getNickname()))
                 .andExpect(jsonPath("phone").value(memberUpdateDto.getPhone()))
+                .andDo(document("회원 수정"))
                 .andDo(print())
         ;
     }
@@ -245,6 +253,7 @@ public class MemberApiControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
+                .andDo(document("회원 한명 삭제"))
                 .andDo(print())
         ;
     }

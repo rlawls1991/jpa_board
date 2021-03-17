@@ -24,22 +24,6 @@ public class MemberRepositoryCustomImpl implements MemberRepositoryCustom {
     private final JPAQueryFactory query;
 
     @Override
-    public MemberDto findByMember(final Long memberId) {
-        return query
-                .select(new QMemberDto(
-                        member.memberId,
-                        member.name,
-                        member.phone,
-                        member.email,
-                        member.nickname,
-                        member.createDt,
-                        member.updateDt))
-                .from(member)
-                .where(memberIdEq(memberId))
-                .fetchOne();
-    }
-
-    @Override
     public Page<MemberDto> findAll(MemberSearchDto memberSearchDto, Pageable pageable) {
         QueryResults<MemberDto> result = query
                 .select(new QMemberDto(

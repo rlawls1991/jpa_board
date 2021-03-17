@@ -11,15 +11,6 @@ import org.springframework.data.domain.Pageable;
 public interface MemberRepositoryCustom {
 
     /**
-     * 회원 한명의 정보를 조회
-     *
-     * @param memberId
-     * @return
-     */
-    MemberDto findByMember(final Long memberId);
-
-
-    /**
      * 회원 페이징 형태로 조회
      *
      * @param memberSearchDto

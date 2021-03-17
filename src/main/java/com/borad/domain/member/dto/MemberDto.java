@@ -19,8 +19,8 @@ public class MemberDto {
     private LocalDateTime updateDt;
 
     @QueryProjection
-    public MemberDto(final Long memberId, final String name, final String nickname, final String phone, final String email,
-                     final LocalDateTime createDt, final LocalDateTime updateDt) {
+    public MemberDto(Long memberId, String name, String nickname, String phone, String email,
+                     LocalDateTime createDt, LocalDateTime updateDt) {
         this.memberId = memberId;
         this.name = name;
         this.nickname = nickname;

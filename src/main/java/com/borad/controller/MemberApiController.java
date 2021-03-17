@@ -74,7 +74,7 @@ public class MemberApiController {
      * @return
      */
     @GetMapping
-    public ResponseEntity queryMembers(MemberSearchDto searchDto, Pageable pageable, PagedResourcesAssembler<MemberDto> assembler) {
+    public ResponseEntity queryMembers(MemberSearchDto searchDto, Pageable pageable) {
 
         MemberPages memberPages = new MemberPages(memberService.findAll(searchDto, pageable));
 
