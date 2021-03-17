@@ -1,5 +1,6 @@
 package com.borad.domain.borard;
 
+import com.borad.domain.borard.dto.BoardParamDto;
 import com.borad.domain.member.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,9 +9,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
@@ -22,21 +22,35 @@ public class Board {
     @Column(name = "board_id")
     private Long boardId;
 
-    @NotEmpty
+    @Column(nullable = false, length = 200)
     private String title;
 
-    @NotEmpty
-    private String Contents;
+    @Column(nullable = false, length = 3000)
+    private String contents;
 
     @CreationTimestamp
     @Column(name = "create_dt")
-    private Date createDt; // 생성일시
+    private LocalDateTime createDt; // 생성일시
     @UpdateTimestamp
     @Column(name = "update_dt")
-    private Date updateDt; // 수정일시
+    private LocalDateTime updateDt; // 수정일시
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "member_id")
     private Member member;
 
+    public Board(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
+
+    public static Board createBoard(BoardParamDto boardParamDto){
+        return new Board(boardParamDto.getTitle(), boardParamDto.getContents());
+    }
+
+    public Board updateBoard(BoardParamDto boardParamDto){
+        this.title = boardParamDto.getTitle();
+        this.contents = boardParamDto.getContents();
+        return this;
+    }
 }
