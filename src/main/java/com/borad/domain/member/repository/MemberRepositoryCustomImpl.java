@@ -1,10 +1,11 @@
-package com.borad.domain.borard.repository;
+package com.borad.domain.member.repository;
 
 
 
-import com.borad.domain.borard.dto.MemberDto;
-import com.borad.domain.borard.dto.MemberSearchDto;
-import com.borad.domain.borard.dto.QMemberDto;
+
+import com.borad.domain.member.dto.MemberDto;
+import com.borad.domain.member.dto.MemberSearchDto;
+import com.borad.domain.member.dto.QMemberDto;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;

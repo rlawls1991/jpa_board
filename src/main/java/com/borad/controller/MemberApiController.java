@@ -1,10 +1,10 @@
 package com.borad.controller;
 
 
-import com.borad.domain.borard.dto.MemberDto;
-import com.borad.domain.borard.dto.MemberParamDto;
-import com.borad.domain.borard.dto.MemberSearchDto;
-import com.borad.domain.borard.service.MemberService;
+import com.borad.domain.member.dto.MemberDto;
+import com.borad.domain.member.dto.MemberParamDto;
+import com.borad.domain.member.dto.MemberSearchDto;
+import com.borad.domain.member.service.MemberService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

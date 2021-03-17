@@ -1,8 +1,6 @@
-package com.borad.domain.borard.dto;
+package com.borad.domain.member.dto;
 
 
-
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,9 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Data
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 public class MemberParamDto {
     @NotEmpty
     @Size(min = 1, max = 20, message = "이름의 최대길이는 20글자 입니다.")
@@ -31,4 +27,13 @@ public class MemberParamDto {
     @Email
     @Size(max = 100, message = "이메일의 최대 길이는 100글자 입니다.")
     private String email;
+
+    @Builder(buildMethodName = "mockMvcBuilderMemberParamDto")
+    private MemberParamDto(String name, String nickname, String password, String phone, String email) {
+        this.name = name;
+        this.nickname = nickname;
+        this.password = password;
+        this.phone = phone;
+        this.email = email;
+    }
 }

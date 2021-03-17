@@ -1,4 +1,4 @@
-package com.borad.domain.borard.dto;
+package com.borad.domain.member.dto;
 
 import com.borad.domain.member.Member;
 import com.querydsl.core.annotations.QueryProjection;

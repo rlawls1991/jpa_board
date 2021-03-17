@@ -1,4 +1,4 @@
-package com.borad.domain.borard.repository;
+package com.borad.domain.member.repository;
 
 
 import com.borad.domain.member.Member;

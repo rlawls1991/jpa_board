@@ -1,11 +1,12 @@
-package com.borad.domain.borard.service;
+package com.borad.domain.member.service;
 
 
-import com.borad.domain.borard.dto.MemberDto;
-import com.borad.domain.borard.dto.MemberParamDto;
-import com.borad.domain.borard.dto.MemberSearchDto;
-import com.borad.domain.borard.repository.MemberRepository;
+
 import com.borad.domain.member.Member;
+import com.borad.domain.member.dto.MemberDto;
+import com.borad.domain.member.dto.MemberParamDto;
+import com.borad.domain.member.dto.MemberSearchDto;
+import com.borad.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

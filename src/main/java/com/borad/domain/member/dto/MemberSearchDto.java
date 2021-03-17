@@ -1,4 +1,4 @@
-package com.borad.domain.borard.dto;
+package com.borad.domain.member.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

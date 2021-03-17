@@ -1,7 +1,9 @@
 package com.borad.domain.member;
 
 import com.borad.domain.borard.Board;
-import com.borad.domain.borard.dto.MemberParamDto;
+
+
+import com.borad.domain.member.dto.MemberParamDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +15,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Entity
 @Getter

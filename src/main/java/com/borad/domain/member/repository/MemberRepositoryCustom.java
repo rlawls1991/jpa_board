@@ -1,9 +1,9 @@
-package com.borad.domain.borard.repository;
+package com.borad.domain.member.repository;
 
 
 
-import com.borad.domain.borard.dto.MemberDto;
-import com.borad.domain.borard.dto.MemberSearchDto;
+import com.borad.domain.member.dto.MemberDto;
+import com.borad.domain.member.dto.MemberSearchDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
