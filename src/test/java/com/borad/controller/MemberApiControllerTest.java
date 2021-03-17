@@ -267,7 +267,7 @@ public class MemberApiControllerTest {
                 .nickname("테스트")
                 .email("테스트")
                 .password("test1234")
-                .phone("01068140330")
+                .phone("01012345678")
                 .mockMvcBuilderMember();
 
         return memberRepository.save(member);
