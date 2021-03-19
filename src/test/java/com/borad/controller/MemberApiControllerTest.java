@@ -91,6 +91,7 @@ public class MemberApiControllerTest {
     }
 
     @Test
+    @Transactional
     @DisplayName("입력값이 비어있는 경우에 에러가 발생하는 테스트")
     public void createMember_Bad_Request_Empty_Input() throws Exception {
         // Given
@@ -106,6 +107,7 @@ public class MemberApiControllerTest {
     }
 
     @Test
+    @Transactional
     @DisplayName("입력값이 잘못들어가 에러가 발생하는 테스트")
     public void createMember_Bad_Request_Wrong_Input() throws Exception {
         // Given
@@ -187,7 +189,7 @@ public class MemberApiControllerTest {
                 .mockMvcBuilderMemberParamDto();
 
         // When
-        ResultActions perform = this.mockMvc.perform(put("/api/member/{id}", String.valueOf(member.getMemberId()))
+        ResultActions perform = this.mockMvc.perform(put("/api/member/{id}", member.getMemberId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(this.objectMapper.writeValueAsString(memberUpdateDto)))
                 .andDo(print());
@@ -211,7 +213,7 @@ public class MemberApiControllerTest {
         Member member = saveMember(100);
 
         // When & Then
-        this.mockMvc.perform(put("/api/member/{id}", String.valueOf(member.getMemberId()))
+        this.mockMvc.perform(put("/api/member/{id}", member.getMemberId())
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(member)))
                 .andExpect(status().isBadRequest())
@@ -259,6 +261,7 @@ public class MemberApiControllerTest {
     }
 
     @Test
+    @Transactional
     @DisplayName("없는 회원을 삭제했을 때 404 응답")
     public void deleteStudent404() throws Exception {
         // When & Then
