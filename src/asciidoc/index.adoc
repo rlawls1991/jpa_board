@@ -1,13 +1,3 @@
-= REST API Guide
-:doctype: book
-:icons: font
-:source-highlighter: highlightjs
-:toc: left
-:toclevels: 4
-:sectlinks:
-:operation-curl-request-title: Example request
-:operation-http-response-title: Example response
-
 [[overview]]
 = 개요
 
@@ -68,37 +58,118 @@
 `GET` 요청을 사용하여 인덱스에 접근할 수 있다.
 
 
-[[resources-members]]
+[[resources-member]]
 == 회원
 
-회원 리소스는 회원를 만들거나 조회할 때 사용한다.
-
-[[resources-members-list]]
-=== 회원 목록 조회
-
-`GET` 요청을 사용하여 서비스의 모든 회원를 조회할 수 있다.(이메일과 이름으로 조회가능)
-
- http://localhost:8080/api/member?page=1&size=10&email=%ED%85%8C%EC%8A%A4%ED%8A%B8
-
-
-[[resources-members-create]]
+[[resources-member-create]]
 === 회원 생성
 
 `POST` 요청을 사용해서 새 회원를 만들 수 있다.
 
- http://localhost:8080/api/member
+include::{snippets}/회원 생성/curl-request.adoc[]
+include::{snippets}/회원 생성/http-response.adoc[]
+include::{snippets}/회원 생성/curl-request.adoc[]
+include::{snippets}/회원 생성/http-response.adoc[]
 
-[[resources-members-get]]
+
+[[resources-member-list]]
+=== 회원 페이징 조회
+
+`GET` 요청을 사용하여 서비스의 모든 회원를 조회할 수 있다.(이메일과 이름으로 조회가능)
+
+include::{snippets}/회원 페이징 조회/curl-request.adoc[]
+include::{snippets}/회원 페이징 조회/http-response.adoc[]
+include::{snippets}/회원 페이징 조회/curl-request.adoc[]
+include::{snippets}/회원 페이징 조회/http-response.adoc[]
+
+[[resources-member-get]]
 === 회원 조회
 
 `Get` 요청을 사용해서 기존 회원 하나를 조회할 수 있다.
 
-http://localhost:8080/api/member/43
+include::{snippets}/회원 한명 조회/curl-request.adoc[]
+include::{snippets}/회원 한명 조회/http-response.adoc[]
+include::{snippets}/회원 한명 조회/curl-request.adoc[]
+include::{snippets}/회원 한명 조회/http-response.adoc[]
 
 
-[[resources-members-update]]
+[[resources-member-update]]
 === 회원 수정
 
 `PUT` 요청을 사용해서 기존 회원를 수정할 수 있다.
 
- http://localhost:8080/api/member/43
+include::{snippets}/회원 수정/curl-request.adoc[]
+include::{snippets}/회원 수정/http-response.adoc[]
+include::{snippets}/회원 수정/curl-request.adoc[]
+include::{snippets}/회원 수정/http-response.adoc[]
+
+
+[[resources-member-delete]]
+=== 회원 삭제
+
+`DELETE` 요청을 사용해서 기존 회원를 수정할 수 있다.
+
+include::{snippets}/회원 한명 삭제/curl-request.adoc[]
+include::{snippets}/회원 한명 삭제/http-response.adoc[]
+include::{snippets}/회원 한명 삭제/curl-request.adoc[]
+include::{snippets}/회원 한명 삭제/http-response.adoc[]
+
+
+
+
+
+[[resources-members]]
+== 게시판
+
+[[resources-board-create]]
+=== 게시판 생성
+
+`POST` 요청을 사용해서 새 게시판를 만들 수 있다.
+
+include::{snippets}/게시판 생성/curl-request.adoc[]
+include::{snippets}/게시판 생성/http-response.adoc[]
+include::{snippets}/게시판 생성/curl-request.adoc[]
+include::{snippets}/게시판 생성/http-response.adoc[]
+
+
+[[resources-boards-list]]
+=== 게시판 페이징 조회
+
+`GET` 요청을 사용하여 서비스의 모든 게시판를 조회할 수 있다.
+
+include::{snippets}/회원 페이징 조회/curl-request.adoc[]
+include::{snippets}/회원 페이징 조회/http-response.adoc[]
+include::{snippets}/회원 페이징 조회/curl-request.adoc[]
+include::{snippets}/회원 페이징 조회/http-response.adoc[]
+
+[[resources-board-get]]
+=== 게시판 조회
+
+`Get` 요청을 사용해서 기존 게시판 하나를 조회할 수 있다.
+
+include::{snippets}/게시판 하나 조회/curl-request.adoc[]
+include::{snippets}/게시판 하나 조회/http-response.adoc[]
+include::{snippets}/게시판 하나 조회/curl-request.adoc[]
+include::{snippets}/게시판 하나 조회/http-response.adoc[]
+
+
+[[resources-board-update]]
+=== 게시판 수정
+
+`PUT` 요청을 사용해서 기존 게시판를 수정할 수 있다.
+
+include::{snippets}/게시판 수정/curl-request.adoc[]
+include::{snippets}/게시판 수정/http-response.adoc[]
+include::{snippets}/게시판 수정/curl-request.adoc[]
+include::{snippets}/게시판 수정/http-response.adoc[]
+
+
+[[resources-board-delete]]
+=== 회원 삭제
+
+`DELETE` 요청을 사용해서 기존 게시판를 수정할 수 있다.
+
+include::{snippets}/게시판 하나 삭제/curl-request.adoc[]
+include::{snippets}/게시판 하나 삭제/http-response.adoc[]
+include::{snippets}/게시판 하나 삭제/curl-request.adoc[]
+include::{snippets}/게시판 하나 삭제/http-response.adoc[]
