@@ -1,6 +1,6 @@
 package com.borad.domain.borard.repository;
 
-import com.borad.domain.borard.dto.BoardDto;
+import com.borad.domain.borard.dto.BoardMemberDto;
 import com.borad.domain.borard.dto.BoardSearchDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,5 +14,5 @@ public interface BoardRepositoryCustom {
      * @param pageable
      * @return
      */
-    Page<BoardDto> findAll(BoardSearchDto boardSearchDto, Pageable pageable);
+    Page<BoardMemberDto> findAll(BoardSearchDto boardSearchDto, Pageable pageable);
 }

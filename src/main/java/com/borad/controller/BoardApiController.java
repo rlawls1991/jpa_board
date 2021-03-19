@@ -2,6 +2,7 @@ package com.borad.controller;
 
 
 import com.borad.domain.borard.dto.BoardDto;
+import com.borad.domain.borard.dto.BoardMemberDto;
 import com.borad.domain.borard.dto.BoardParamDto;
 import com.borad.domain.borard.dto.BoardSearchDto;
 import com.borad.domain.borard.service.BoardService;
@@ -13,8 +14,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -126,9 +125,9 @@ public class BoardApiController {
 
     @Data
     static class BoardPages {
-        private Page<BoardDto> page;
+        private Page<BoardMemberDto> page;
 
-        public BoardPages(Page<BoardDto> page) {
+        public BoardPages(Page<BoardMemberDto> page) {
             this.page = page;
         }
     }

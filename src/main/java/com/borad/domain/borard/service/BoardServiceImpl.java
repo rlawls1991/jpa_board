@@ -2,6 +2,7 @@ package com.borad.domain.borard.service;
 
 import com.borad.domain.borard.Board;
 import com.borad.domain.borard.dto.BoardDto;
+import com.borad.domain.borard.dto.BoardMemberDto;
 import com.borad.domain.borard.dto.BoardParamDto;
 import com.borad.domain.borard.dto.BoardSearchDto;
 import com.borad.domain.borard.repository.BoardRepository;
@@ -48,7 +49,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<BoardDto> finaAll(final BoardSearchDto boardSearchDto, final Pageable pageable) {
+    public Page<BoardMemberDto> finaAll(final BoardSearchDto boardSearchDto, final Pageable pageable) {
         return boardRepository.findAll(boardSearchDto, pageable);
     }
 

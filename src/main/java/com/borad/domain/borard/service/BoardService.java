@@ -1,6 +1,7 @@
 package com.borad.domain.borard.service;
 
 import com.borad.domain.borard.dto.BoardDto;
+import com.borad.domain.borard.dto.BoardMemberDto;
 import com.borad.domain.borard.dto.BoardParamDto;
 import com.borad.domain.borard.dto.BoardSearchDto;
 import org.springframework.data.domain.Page;
@@ -27,18 +28,20 @@ public interface BoardService {
 
     /**
      * 게시판 수정
+     *
      * @param boardId
      * @param boardParamDto
      * @return
      */
     BoardDto updateBoard(Long boardId, BoardParamDto boardParamDto);
+
     /**
      * 게시판 페이징 조회
      *
      * @param pageable
      * @return
      */
-    Page<BoardDto> finaAll(BoardSearchDto boardSearchDto, Pageable pageable);
+    Page<BoardMemberDto> finaAll(BoardSearchDto boardSearchDto, Pageable pageable);
 
     /**
      * 게시판 삭제

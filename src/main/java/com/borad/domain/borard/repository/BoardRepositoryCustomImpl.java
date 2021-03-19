@@ -1,8 +1,6 @@
 package com.borad.domain.borard.repository;
 
-import com.borad.domain.borard.dto.BoardDto;
-import com.borad.domain.borard.dto.BoardSearchDto;
-import com.borad.domain.borard.dto.QBoardDto;
+import com.borad.domain.borard.dto.*;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -13,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import static com.borad.domain.borard.QBoard.board;
+import static com.borad.domain.member.QMember.member;
 
 @Repository
 @RequiredArgsConstructor
@@ -21,23 +20,26 @@ public class BoardRepositoryCustomImpl implements BoardRepositoryCustom {
     private final JPAQueryFactory query;
 
     @Override
-    public Page<BoardDto> findAll(BoardSearchDto boardSearchDto, Pageable pageable) {
-        QueryResults<BoardDto> result = query
-                .select(new QBoardDto(
+    public Page<BoardMemberDto> findAll(BoardSearchDto boardSearchDto, Pageable pageable) {
+        QueryResults<BoardMemberDto> result = query
+                .select(new QBoardMemberDto(
+                        member.memberId,
                         board.boardId,
+                        member.name,
+                        member.nickname,
+                        board.updateDt,
                         board.title,
-                        board.contents,
-                        board.createDt,
-                        board.updateDt
+                        board.contents
                 ))
-                .from(board)
+                .from(member)
+                .leftJoin(member.boards, board)
                 .where(
                         titleLike(boardSearchDto.getTitle())
                         , contentsLike(boardSearchDto.getContents())
                 )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .orderBy(board.createDt.desc())
+                .orderBy(board.updateDt.desc())
                 .fetchResults();
 
         return new PageImpl<>(result.getResults(), pageable, result.getTotal());
