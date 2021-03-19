@@ -272,7 +272,6 @@ public class MemberApiControllerTest {
         ;
     }
 
-
     private Member saveMember(int index) {
         Member member = Member.builder()
                 .name("테스트" + index)

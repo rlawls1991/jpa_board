@@ -2,6 +2,7 @@ package com.borad.domain.borard;
 
 import com.borad.domain.borard.dto.BoardParamDto;
 import com.borad.domain.member.Member;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,6 +40,12 @@ public class Board {
     @JoinColumn(name = "member_id")
     private Member member;
 
+
+    @Builder(buildMethodName = "mockMvcBuilderBoard")
+    private Board(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
 
     public Board(String title, String contents, Member member) {
         this.title = title;
