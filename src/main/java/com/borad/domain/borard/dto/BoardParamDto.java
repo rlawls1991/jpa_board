@@ -9,14 +9,11 @@ import javax.validation.constraints.Size;
 @Data
 public class BoardParamDto {
     @NotEmpty
-    private Long boardId;
-
-    @NotEmpty
-    @Size(min = 1, max = 200, message = "제목의 길이는 최대 200글자 입니다.")
+    @Size(min = 1, max = 50, message = "제목의 길이는 최대 50 입니다.")
     private String title;
 
     @NotEmpty
-    @Size(min = 1, max = 3000, message = "본문의 길이는 최대 3000글자 입니다.")
+    @Size(min = 1, max = 1000, message = "본문의 길이는 최대 1000글자 입니다.")
     private String contents;
 
     @Builder(buildMethodName = "mockMvcBuilderBoardParamDto")

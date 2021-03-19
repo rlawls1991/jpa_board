@@ -5,6 +5,7 @@ import com.borad.domain.borard.dto.BoardDto;
 import com.borad.domain.borard.dto.BoardParamDto;
 import com.borad.domain.borard.dto.BoardSearchDto;
 import com.borad.domain.borard.repository.BoardRepository;
+import com.borad.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,10 +19,12 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService {
     private final BoardRepository boardRepository;
+    private final MemberRepository memberRepository;
 
     @Override
-    public BoardDto createBoard(final BoardParamDto boardParamDto) {
-        Board createBoard = Board.createBoard(boardParamDto);
+    @Transactional
+    public BoardDto createBoard(final Long memberId, final BoardParamDto boardParamDto) {
+        Board createBoard = Board.createBoard(memberRepository.findById(memberId).get(), boardParamDto);
         boardRepository.save(createBoard);
         return BoardDto.createMemberDto(createBoard);
     }
@@ -36,7 +39,8 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public BoardDto updateBoard(Long boardId, BoardParamDto boardParamDto) {
+    @Transactional
+    public BoardDto updateBoard(final Long boardId, final BoardParamDto boardParamDto) {
         Optional<Board> optionalBoard = boardRepository.findById(boardId);
         Board board = optionalBoard.get();
         board.updateBoard(boardParamDto);
@@ -44,11 +48,12 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public Page<BoardDto> finaAll(final BoardSearchDto boardSearchDto, Pageable pageable) {
+    public Page<BoardDto> finaAll(final BoardSearchDto boardSearchDto, final Pageable pageable) {
         return boardRepository.findAll(boardSearchDto, pageable);
     }
 
     @Override
+    @Transactional
     public void deleteBoard(final Long boardId) {
         boardRepository.deleteById(boardId);
     }

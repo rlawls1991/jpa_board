@@ -22,10 +22,10 @@ public class Board {
     @Column(name = "board_id")
     private Long boardId;
 
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false, length = 50)
     private String title;
 
-    @Column(nullable = false, length = 3000)
+    @Column(nullable = false, length = 1000)
     private String contents;
 
     @CreationTimestamp
@@ -39,13 +39,15 @@ public class Board {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public Board(String title, String contents) {
+
+    public Board(String title, String contents, Member member) {
         this.title = title;
         this.contents = contents;
+        this.member = member;
     }
 
-    public static Board createBoard(BoardParamDto boardParamDto){
-        return new Board(boardParamDto.getTitle(), boardParamDto.getContents());
+    public static Board createBoard(Member member, BoardParamDto boardParamDto){
+        return new Board(boardParamDto.getTitle(), boardParamDto.getContents(), member);
     }
 
     public Board updateBoard(BoardParamDto boardParamDto){

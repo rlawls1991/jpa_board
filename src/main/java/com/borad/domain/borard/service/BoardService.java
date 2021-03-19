@@ -14,7 +14,7 @@ public interface BoardService {
      * @param boardParamDto
      * @return
      */
-    BoardDto createBoard(BoardParamDto boardParamDto);
+    BoardDto createBoard(Long memberId, BoardParamDto boardParamDto);
 
     /**
      * 게시판 조회
